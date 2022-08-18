@@ -14,7 +14,7 @@ public class KafkaToHive {
     public static void main(String[] args) {
         //Flink流环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setParallelism(1);
+        env.setParallelism(1);//
         //开启CK
         env.enableCheckpointing(10000L, CheckpointingMode.EXACTLY_ONCE);
         env.getCheckpointConfig().setCheckpointTimeout(60000L);
