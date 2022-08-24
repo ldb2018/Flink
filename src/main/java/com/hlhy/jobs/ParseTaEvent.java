@@ -15,7 +15,7 @@ import java.util.Map;
 public class ParseTaEvent {
 
     // 定义函数逻辑
-    public  class MapToJson extends ScalarFunction {
+    public  static class MapToJson extends ScalarFunction {
         public String eval(Map<String, String> map) {
 
             JSONObject out = new JSONObject();
