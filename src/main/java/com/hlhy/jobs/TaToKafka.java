@@ -12,7 +12,7 @@ import org.apache.flink.table.module.hive.HiveModule;
 import java.util.Map;
 
 
-public class ParseTaEvent {
+public class TaToKafka {
 
     // 定义函数逻辑
     public  static class MapToJson extends ScalarFunction {

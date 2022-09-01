@@ -20,6 +20,7 @@ public class TestKafkaToMysql {
 //TODO 1.创建Flink流环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(2);
+
 //开启CK
         env.enableCheckpointing(60000L, CheckpointingMode.EXACTLY_ONCE);
         env.getCheckpointConfig().setCheckpointTimeout(60000L);
@@ -56,10 +57,11 @@ public class TestKafkaToMysql {
                 ") WITH (\n" +
                 "   'connector' = 'jdbc',\n" +
                 "   'url' = 'jdbc:mysql://127.0.0.1:3306/ad',\n" +
+                "   'driver'= 'com.mysql.cj.jdbc.Driver',\n" +
                 "   'table-name' = 'test_20220824',\n" +
                 "   'username' = 'root',\n" +
                 "   'password' = '',\n" +
-                "   'sink.buffer-flush.max-rows'='1',\n" +
+                "   'sink.buffer-flush.max-rows'='10',\n" +
                 "   'sink.buffer-flush.interval'='5s'\n" +
                 ")");
 
@@ -74,10 +76,11 @@ public class TestKafkaToMysql {
                 ") WITH (\n" +
                 "   'connector' = 'jdbc',\n" +
                 "   'url' = 'jdbc:mysql://127.0.0.1:3306/ad?useUnicode=true&characterEncoding=UTF-8',\n" +
+                "   'driver'= 'com.mysql.cj.jdbc.Driver',\n" +
                 "   'table-name' = 'test_20220824',\n" +
                 "   'username' = 'root',\n" +
                 "   'password' = '',\n" +
-                "   'sink.buffer-flush.max-rows'='1',\n" +
+                "   'sink.buffer-flush.max-rows'='10',\n" +
                 "   'sink.buffer-flush.interval'='5s'\n" +
                 ")");
 
